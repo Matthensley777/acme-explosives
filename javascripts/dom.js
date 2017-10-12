@@ -1,22 +1,27 @@
 "use strict";
 
-    var categories = [];
-    var types = [];
-    var products = [];
+    let categories = [];
+    let types = [];
+    let products = [];
 
     
 const writeDOM = (userSelectedCategory) => {
+        console.log("writeDOM", writeDOM);
         var domString = "";
         var selectedCategory = userSelectedCategory;
-            categories.forEach((currentCategory) => {
+            categories.forEach(function(currentCategory){
                 if (currentCategory.name === selectedCategory){
                     console.log("currentCategory", currentCategory.name);
-                    types.forEach((currentType) => {
+                    types.forEach(function(currentType){
                         if (currentType.category === currentCategory.id) {
                             console.log("currentType", currentType);
-                            products.forEach((currentProduct) => {
+                            domString += `<h1>${currentType.name}</h1>`;
+                            domString += `<h3>${currentType.description}</h3>`;
+                            products.forEach(function(currentProduct){
                                 if (currentProduct.type === currentType.id) {
-                                    console.log("prodcut", currentProduct);
+                                    console.log(currentProduct);
+                                    domString += `<h4>${currentProduct.name}</h4>`;
+                                    domString += `<p>${currentProduct.description}</p>`;
                                 }
                             });
                         }
@@ -26,7 +31,6 @@ const writeDOM = (userSelectedCategory) => {
 
         $("#output").html(domString);
     };
-
 
    
     const categoriesJSON = () =>{
@@ -74,13 +78,30 @@ const writeDOM = (userSelectedCategory) => {
     }).catch(function(error){
         console.log(error);
     });
-    // $("#Explosives").click(function(e){
-    //     categoriesJSON();
-    //     writeDOM(e.target.id);
-    // });
-    // $("#Fireworks").click(function(e){
-    //     categoriesJSON();
-    //     writeDOM(e.target.id);
-    // });
 
-module.exports = {};
+
+
+
+
+
+
+module.exports = {categoriesJSON, typesJSON, productsJSON, writeDOM};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
