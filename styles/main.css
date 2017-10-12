@@ -1,0 +1,10 @@
+body {
+	background-color: lightgrey;
+}
+
+.container {
+	border: 1px solid black;
+	max-width: 400px;
+	position: left;
+	display: inline-block;
+}

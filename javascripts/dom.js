@@ -6,22 +6,25 @@
 
     
 const writeDOM = (userSelectedCategory) => {
-        console.log("writeDOM", writeDOM);
         var domString = "";
         var selectedCategory = userSelectedCategory;
-            categories.forEach(function(currentCategory){
+            categories.forEach((currentCategory) =>{
                 if (currentCategory.name === selectedCategory){
                     console.log("currentCategory", currentCategory.name);
-                    types.forEach(function(currentType){
+                    types.forEach((currentType) =>{
                         if (currentType.category === currentCategory.id) {
                             console.log("currentType", currentType);
+                            domString += `<div  class="container">`;
                             domString += `<h1>${currentType.name}</h1>`;
-                            domString += `<h3>${currentType.description}</h3>`;
-                            products.forEach(function(currentProduct){
+                            // domString += `<h3>${currentType.description}</h3>`;
+                            domString += `</div>`;
+                            products.forEach((currentProduct) => {
                                 if (currentProduct.type === currentType.id) {
                                     console.log(currentProduct);
+                                    domString += `<div class="container">`;
                                     domString += `<h4>${currentProduct.name}</h4>`;
                                     domString += `<p>${currentProduct.description}</p>`;
+                                    domString += `</div>`;
                                 }
                             });
                         }
@@ -86,6 +89,29 @@ const writeDOM = (userSelectedCategory) => {
 
 
 module.exports = {categoriesJSON, typesJSON, productsJSON, writeDOM};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
